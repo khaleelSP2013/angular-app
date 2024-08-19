@@ -1,0 +1,24 @@
+<div>
+    <h5>Dynamic Form </h5>
+    <form [formGroup]="dynamicFormGroup" (ngSubmit)="onSubmit()">
+        <div class="form-row" *ngFor="let fields of AddressInfo.controls; let i = index" >
+            <div class="form-group col-md-3" >
+                <label for="password"><b>Street Address</b></label>
+                <input type="text" class="form-control" placeholder="Street Address" name="SA" formControlName="fields.streetAddress" />
+              </div>
+              <div class="form-group col-md-3" >
+                <label for="password"><b>City</b></label>
+                <input type="text" class="form-control" placeholder="City" name="city" formControlName="fields.city" />
+              </div>
+              <div class="form-group col-md-3" >
+                <label for="password"><b>State</b></label>
+                <input type="text" class="form-control" placeholder="State" name="state" formControlName="fields.state" />
+              </div>
+              <hr/>
+        </div>
+        <hr/>
+     <button type="submit"  class="btn btn-primary">Submit</button>
+    </form>
+  
+     <button type = "button" class="btn btn-primary" (click)="addNewAddress()" >Add New Address</button>
+</div>    

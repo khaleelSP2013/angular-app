@@ -8,6 +8,7 @@ import { GenderPipe } from '../customPipe/genderPipe.pipe';
 import { ItemComponent } from './item/item/item.component';
 import { ItemviewComponent } from './item/itemview/itemview.component';
 import { ItemeditComponent } from './item/itemedit/itemedit.component';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 
 export const routes: Routes = [
     {path:"login",component: LoginComponent},
@@ -20,6 +21,7 @@ export const routes: Routes = [
             {path:"edit",component:ItemeditComponent}
         ]
     },
+    {path:"dynamicform",component:DynamicFormComponent},
     {path:"**",component: ErrorComponent},
     
 ];

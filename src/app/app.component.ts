@@ -12,7 +12,7 @@ import { AppRoutingModule, routes } from './app.routes';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule],
+ imports: [RouterOutlet,CommonModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule],
   providers:[StudentService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
