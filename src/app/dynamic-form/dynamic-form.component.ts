@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { routes } from '../app.routes';
 
@@ -15,6 +15,7 @@ export class DynamicFormComponent implements OnInit {
   dynamicFormGroup: FormGroup | any;  
   
   output!: any;
+  index!: number;
   constructor(private formBuilder : FormBuilder) { 
    
   }
@@ -26,19 +27,21 @@ export class DynamicFormComponent implements OnInit {
   }
   get createItem(): FormGroup {
     return this.formBuilder.group({
-      streetAddress: '',
-      city:'',
-      state:''
+      streetAddress: new FormControl(''),
+      city:new FormControl(''),
+      state:new FormControl('')
     })
   }
 
   onSubmit() {
     this.output = this.dynamicFormGroup.controls['address'].value;
-        console.log(this.output);
     }
 
     addNewAddress(): void {
       (this.dynamicFormGroup.get('address') as FormArray).push(this.createItem);
+    }
+    removeAddress(index: number) {
+      this.AddressInfo.removeAt(index);
     }
     get formControllers() {
       return this.dynamicFormGroup.controls;
