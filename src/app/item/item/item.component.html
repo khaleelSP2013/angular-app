@@ -1,0 +1,12 @@
+<p appCustomdirective>Item Component works!</p>
+<div *ngFor="let p of personlist">
+   {{p.name}}
+ </div>
+<nav> 
+    <ul> 
+       <li><a routerLink="view">View</a></li> 
+       <li><a routerLink="edit">Edit</a></li> 
+    </ul>
+ </nav> 
+
+ <router-outlet></router-outlet>
