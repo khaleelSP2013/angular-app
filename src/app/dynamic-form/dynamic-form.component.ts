@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { routes } from '../app.routes';
 
 @Component({
   selector: 'app-dynamic-form',
   standalone: true,
-  imports: [RouterOutlet,ReactiveFormsModule,FormsModule,CommonModule],
+  imports: [RouterOutlet,ReactiveFormsModule,FormsModule,CommonModule,JsonPipe],
   templateUrl: './dynamic-form.component.html',
   styleUrl: './dynamic-form.component.css'
 })
@@ -22,17 +22,18 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.dynamicFormGroup = this.formBuilder.group({
-      address: new FormArray([this.createItem]),
+      address: new FormArray([this.createItem],Validators.required),
     });
   }
   get createItem(): FormGroup {
     return this.formBuilder.group({
-      streetAddress: new FormControl(''),
-      city:new FormControl(''),
-      state:new FormControl('')
-    })
+      streetAddress: ['',Validators.required],
+      city:['',Validators.required],
+      state:['',Validators.required],
+    },
+  )
   }
-
+  
   onSubmit() {
     this.output = this.dynamicFormGroup.controls['address'].value;
     }
@@ -41,6 +42,9 @@ export class DynamicFormComponent implements OnInit {
       (this.dynamicFormGroup.get('address') as FormArray).push(this.createItem);
     }
     removeAddress(index: number) {
+      if(this.AddressInfo.length ==1){
+        return;
+      }
       this.AddressInfo.removeAt(index);
     }
     get formControllers() {

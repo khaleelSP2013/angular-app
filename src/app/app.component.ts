@@ -19,12 +19,9 @@ import { AppRoutingModule, routes } from './app.routes';
 })
 export class AppComponent implements OnInit{
   myform: FormGroup | any;
-  title = 'Angular Concept';
+  title = '';
   studendData:IStudent[]=[]
-  personlist=[
-    {name:"khaleel",gender:"M"},
-    {name:"Ahmed",gender:"F"}
-  ]
+ 
   constructor(private _studentService:StudentService,private _fb:FormBuilder) {
     this.myform=this._fb.group({
       name:['',[Validators.required,Validators.minLength(3)]],
