@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-order',
@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
   templateUrl: './order.component.html',
   styleUrl: './order.component.css'
 })
-export class OrderComponent {
-
+export class OrderComponent implements OnInit ,AfterViewInit{
+  messageHere!:string
+  constructor() {
+    
+  }
+  ngOnInit(): void {
+    
+  }
+  ngAfterViewInit():void{
+    this.messageHere = "value from child Component to parent component using Viewchild";
+  }
 }
