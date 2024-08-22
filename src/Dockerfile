@@ -1,5 +1,5 @@
 FROM node:20 
-WORKDIR  /myapp
+WORKDIR  /myAngularApp
 COPY . /myAngularApp
 RUN npm install
 EXPOSE 3000
